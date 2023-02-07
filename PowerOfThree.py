@@ -1,5 +1,11 @@
 class Solution:
   def isPowerOfThree(self, n: int) -> bool:
+    
+    isPower = False
+        if n > 0:
+           isPower = ((3 ** 19) % n == 0)
+                
+        return isPower
 
     return n > 0 and 3**19 % n == 0
 
