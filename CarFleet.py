@@ -1,0 +1,13 @@
+class Solution:
+  def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+
+    result = 0
+    times = [float(target - p) / s for p, s in sorted(zip(position, speed),reverse=True)]
+    maxTime = 0
+
+    for time in times:
+      if time > maxTime:
+        maxTime = time
+        result += 1
+
+    return result
