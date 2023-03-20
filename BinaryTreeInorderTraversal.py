@@ -12,4 +12,4 @@ class Solution(object):
             self.inorderTraversal(root.left)
             self.l.append(root.val)
             self.inorderTraversal(root.right)
-        return self.l
+        return self.l 
