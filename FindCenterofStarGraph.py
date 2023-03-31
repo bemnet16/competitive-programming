@@ -16,6 +16,15 @@ class Solution(object):
         if type(x)==int:
             return x
         return c
+    
+    ### or 
+        e1 = edges[1][0]
+        e2 = edges[1][1]
+        for i in edges:
+            if e1 not in i:
+                return e2
+            elif e2 not in i:
+                return e1
                 
             
                 
