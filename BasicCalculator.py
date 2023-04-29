@@ -1,18 +1,29 @@
-class Solution:
-    def calculate(self, s: str) -> int:
-        num, li, op = 0, [], "+"
-        for i in range(len(s)):
-            if s[i].isdigit():
-                num = num * 10 + int(s[i])
-            if s[i] in "+-*/" or i == len(s) - 1:
-                if op == "+":
-                    li.append(num)
-                elif op == "-":
-                    li.append(-num)
-                elif op == "*":
-                    li.append(li.pop()*num)
-                else:
-                    li.append(int(li.pop()/num))
-                num = 0
-                op = s[i]
-        return sum(li)
+class Solution(object):
+    def calculate(self, s):
+        stc=[]
+        c,p,t='','+',0
+        for i in s:
+            if i.isdigit():
+                if c=='':
+                    t=t*10+int(i)
+            elif i in '+-*/':
+                c,p=p,i
+                if c=='+': stc.append(t)
+                elif c=='-': stc.append(-t)
+                elif c=='*': stc.append(stc.pop()*t)
+                elif c=='/':
+                    cur=stc.pop()
+                    if cur<0: stc.append(-(abs(cur)/t))
+                    else: stc.append(cur/t)
+                t=0
+                c=''
+        c=p
+        if c=='+': stc.append(t)
+        elif c=='-': stc.append(-t)
+        elif c=='*': stc.append(stc.pop()*t)
+        elif c=='/':
+            cur=stc.pop()
+            if cur<0: stc.append(-(abs(cur)/t))
+            else: stc.append(cur/t)
+                
+        return sum(stc)
