@@ -1,20 +1,9 @@
 class Solution(object):
     def topKFrequent(self, nums, k):
-        v=[]
         d={}
-        m=[]
         for i in nums:
-            if i not in v:
-                v.append(i)
-                d[i] = nums.count(i)
-        l = list(d.values())
-        l.sort()
-        l = l[::-1]
-        for j in d:
-            for i in range(k):
-                if d[j] == l[i]:
-                    m.append(j)
-                    break
-        return m
-                
-            
+            if i not in d:
+                d[i]=0
+            d[i]+=1
+        d=sorted(d.items(), key=lambda x:x[1])
+        return [d[i][0]  for i in range(len(d)-1,len(d)-k-1,-1)]
