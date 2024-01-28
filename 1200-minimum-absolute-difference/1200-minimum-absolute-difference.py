@@ -9,6 +9,7 @@ class Solution(object):
                 res = []
                 mi = arr[i] - arr[i - 1]
                 res.append([arr[i - 1], arr[i]])
+                
             elif arr[i] - arr[i - 1] == mi:
                 res.append([arr[i - 1], arr[i]])
             
