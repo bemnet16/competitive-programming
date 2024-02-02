@@ -1,5 +1,6 @@
 class Solution(object):
     def sequentialDigits(self, low, high):
+        
         st, en = len(str(low)), len(str(high)) + 1
         res = []
         
