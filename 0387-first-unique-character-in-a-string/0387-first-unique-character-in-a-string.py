@@ -3,14 +3,15 @@ from collections import OrderedDict
 class Solution(object):
     def firstUniqChar(self, s):
         d = OrderedDict()
-        for i,v in enumerate(s):
-            if v in d:
-                d[v][0] += 1
-            else:
-                d[v] = [1,i]
         
-        for c,i in d.values():
-            if c == 1:
-                return i
+        for idx,val in enumerate(s):
+            if val in d:
+                d[val][0] += 1
+            else:
+                d[val] = [1,idx]
+        
+        for count,idx in d.values():
+            if count == 1:
+                return idx
             
         return -1
