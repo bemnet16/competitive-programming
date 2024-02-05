@@ -1,5 +1,6 @@
 class Solution(object):
     def minWindow(self, s, t):
+        
         if len(t) > len(s):
             return ""
         
