@@ -10,10 +10,7 @@ class Solution(object):
         for i in range(1,lg):
             res[i] += res[i - 1]
         
-        for p in res:
-            if p > capacity:
-                return False
+        res[:] = res[0:lg + 1]
         
-        return True
-        
+        return all(p <= capacity for p in res)
         
