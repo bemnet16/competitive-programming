@@ -1,5 +1,5 @@
 class Solution:
-    def bestClosingTime(self, customers: str) -> int:
+    def bestClosingTime(self, customers):
         y_sum = [0] * len(customers)
         n_sum = [0] * len(customers)
         
