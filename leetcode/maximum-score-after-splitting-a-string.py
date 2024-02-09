@@ -18,7 +18,10 @@ class Solution:
             prefix_1[i] += sum_1
         
         for i in range(1,length):
-            score = (prefix_1[-1] - prefix_1[i - 1]) + (prefix_0[i - 1])
+            
+            left = prefix_0[i - 1]
+            right = prefix_1[-1] - prefix_1[i - 1]
+            score = left + right
             answer = max(score, answer)
         
         return answer
