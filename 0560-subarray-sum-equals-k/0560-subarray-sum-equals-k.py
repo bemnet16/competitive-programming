@@ -1,5 +1,5 @@
-class Solution:
-    def subarraySum(self, nums: List[int], k: int) -> int:
+class Solution(object):
+    def subarraySum(self, nums, k):
         res, acc = 0, 0
         trk = defaultdict(int)
         
@@ -12,3 +12,4 @@ class Solution:
             trk[acc] += 1
         
         return res
+        
