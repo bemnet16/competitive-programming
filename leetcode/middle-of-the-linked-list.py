@@ -5,13 +5,14 @@
 #         self.next = next
 class Solution(object):
     def middleNode(self, head):
-        cur=head
-        lg=1
-        while cur.next:
-            lg+=1
-            cur=cur.next
-        lg//=2
-        for i in range(lg):
-            head=head.next
-        return head
+        
+        # Assigne two pointer one moves two ahead each time the other only one
+        slow_pointer = head
+        fast_pointer = head
+        
+        while fast_pointer and fast_pointer.next:
             
+            slow_pointer = slow_pointer.next
+            fast_pointer = fast_pointer.next.next
+        
+        return slow_pointer
