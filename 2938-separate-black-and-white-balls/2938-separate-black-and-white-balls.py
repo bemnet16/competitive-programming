@@ -1,5 +1,5 @@
-class Solution(object):
-    def minimumSteps(self, s):
+class Solution:
+    def minimumSteps(self, s: str) -> int:
         
         answer = 0
         suffix_sum = 0
@@ -15,3 +15,4 @@ class Solution(object):
                 answer += suffix_sum
             
         return answer
+        
