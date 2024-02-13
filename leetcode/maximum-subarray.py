@@ -1,8 +1,15 @@
 class Solution(object):
     def maxSubArray(self, nums):
-        rm=-10001
-        cm=0
-        for i in nums:
-            cm=max(i,cm+i)
-            rm=max(rm,cm)
-        return rm
+
+        answer = float("-inf")
+        prefix_sum = 0
+
+        for i in range(len(nums)):
+
+            prefix_sum += nums[i]
+            answer = max(prefix_sum, answer)
+
+            if prefix_sum < 0:
+                prefix_sum = 0
+        
+        return answer
