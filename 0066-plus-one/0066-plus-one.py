@@ -6,9 +6,6 @@ class Solution:
         nums = int(nums) + 1
         nums = str(nums)
         
-        answer = []
-        for n in nums:
-            answer.append(int(n))
-        
+        answer = [int(n) for n in nums]
         return answer
         
