@@ -16,8 +16,9 @@ class Solution:
         
         for num in set2:
             if num in dict1:
-                temp = [num] * min(dict1[num], dict2[num])
-                answer.extend(temp)
+                times = min(dict1[num], dict2[num])
+                for i in range(times):
+                    answer.append(num)
         
         return answer
         
