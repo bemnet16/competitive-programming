@@ -3,7 +3,6 @@ class Solution:
         
         ch5 = 0
         ch10 = 0
-        ch20 = 0
         
         for bill in bills:
             
@@ -15,12 +14,10 @@ class Solution:
                 ch10 += 10
             
             elif bill == 20 and ch10 and ch5:
-                ch20 += 20
                 ch10 -= 10
                 ch5 -= 5
             
             elif bill == 20 and ch5 >= 15:
-                ch20 += 20
                 ch5 -= 15
             
             else:
