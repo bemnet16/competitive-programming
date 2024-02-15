@@ -7,7 +7,7 @@ class Solution:
             num_character[char] = num_character.get(char, 0) + 1
             
         answer = 0
-        hasOne = False
+        remainOne = False
         
         for char in num_character:
             
@@ -18,8 +18,8 @@ class Solution:
             
             else:
                 answer += (count - 1)
-                hasOne = True
+                remainOne = True
         
-        if hasOne:
+        if remainOne:
             return answer + 1
         return answer
