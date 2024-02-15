@@ -3,8 +3,8 @@ class Node:
         self.prev = None
         self.val = val
         self.next = None
-
-class BrowserHistory(object):
+        
+class BrowserHistory:
 
     def __init__(self, homepage):
         self.cur_history = Node(homepage)
@@ -36,6 +36,8 @@ class BrowserHistory(object):
                 break
         
         return self.cur_history.val
+
+        
 
 
 # Your BrowserHistory object will be instantiated and called as such:
