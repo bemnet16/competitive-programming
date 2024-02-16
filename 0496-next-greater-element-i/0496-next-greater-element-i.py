@@ -1,23 +1,26 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         
-        answer = []
+        mono_stack = []
+        track = {}
         
-        for n in nums1:
+        for i in range(len(nums2)):
+            while mono_stack and mono_stack[-1] < nums2[i]:
+                popped_item = mono_stack.pop()
+                track[popped_item] = nums2[i]
             
-            i = 0
-            while i < len(nums2) and nums2[i] != n:
-                i += 1
+            mono_stack.append(nums2[i])
             
-            while i < len(nums2) and n >= nums2[i]:
-                i += 1
+        for i in range(len(nums1)):
             
-            if i == len(nums2):
-                answer.append(-1)
-            else:
-                answer.append(nums2[i])
-        
-        return answer
-            
+            if nums1[i] in track:
+                nums1[i] = track[nums1[i]]
                 
+            else:
+                nums1[i] = -1
+        
+        
+        return nums1
+        
+        
         
