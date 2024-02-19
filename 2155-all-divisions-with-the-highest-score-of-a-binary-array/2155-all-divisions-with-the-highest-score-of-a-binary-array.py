@@ -18,6 +18,7 @@ class Solution:
             
             count_0 += int(num == 0)
             count_1 -= int(num == 1)
+            
             score = count_0 + count_1
 
             scores[score].append(i + 1)
