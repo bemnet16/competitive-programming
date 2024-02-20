@@ -4,13 +4,13 @@ class Solution:
         d = {0:0, 1:1}
         
         def f(n):
+            
             if n <= 1: return n
             
             if n - 1 not in d:
                 fl = f(n - 1)
                 d[n - 1] = fl
             else:
-                
                 fl = d[n - 1]
 
             if n - 2 not in d:
@@ -20,5 +20,5 @@ class Solution:
                 fr = d[n - 2]
 
             return fl + fr
-        # print(d)
+
         return f(n)
