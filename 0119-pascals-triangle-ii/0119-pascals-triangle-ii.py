@@ -4,15 +4,18 @@ class Solution:
         if rowIndex == 0:
             return [1]
 
-        arr = self.getRow(rowIndex - 1)
+        # previous pascal's triangle from the current index
+        pre_pascal = self.getRow(rowIndex - 1)
         
-        na = [1]
-        for i in range(len(arr) - 1):
-            na.append(arr[i] + arr[i + 1])
+        # the current /that we are trying to build/ pascal triangle
+        cur_pascal = [1]
+        
+        for i in range(len(pre_pascal) - 1):
+            cur_pascal.append(pre_pascal[i] + pre_pascal[i + 1])
 
-        na.append(1)
+        cur_pascal.append(1)
         
-        return na
+        return cur_pascal
         
         
 
