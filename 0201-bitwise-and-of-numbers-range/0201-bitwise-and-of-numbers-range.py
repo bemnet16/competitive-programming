@@ -3,6 +3,8 @@ class Solution:
         
         if left == right: return left
         
+        #### The first answer ####
+        
 #         count = 0
 #         while left != right:
             
@@ -16,6 +18,8 @@ class Solution:
 #         return answer
 
         
+        #### The second answer ####
+    
         left_bits = bin(left)[2:]
         right_bits = bin(right)[2:]
         
