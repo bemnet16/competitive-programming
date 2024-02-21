@@ -10,5 +10,5 @@ class Solution:
             right = right >> 1
             count += 1
 
-        answer = right << count
+        answer = right * (2 ** count)
         return answer
