@@ -10,6 +10,7 @@ class Solution:
             right = right >> 1
             count += 1
 
-        # answer = right * (2 ** count)
-        answer = right << count
+        answer = right * (2 ** count)
+        # answer = right << count
+        
         return answer
