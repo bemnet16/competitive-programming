@@ -21,6 +21,7 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
         self.inorderSearch(root)
+        
         temp = self.values.copy()
         s = set(temp)
         
