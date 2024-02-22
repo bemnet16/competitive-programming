@@ -9,11 +9,11 @@ class Solution:
         
         if not root: return []
         
-        stk = [root]
+        stk = []
         cur = root
         answer = []
         
-        while stk:
+        while cur or stk:
             
             if cur:
                 stk.append(cur)
@@ -24,6 +24,5 @@ class Solution:
                 answer.append(cur.val)
                 cur = cur.right
         
-        if len(answer) >= 2:
-            answer.pop()
+    
         return answer
