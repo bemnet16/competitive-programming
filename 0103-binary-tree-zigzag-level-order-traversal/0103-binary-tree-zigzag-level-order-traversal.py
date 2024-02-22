@@ -10,35 +10,36 @@ class Solution:
         
         if not root: return []
         
-        stk = [[root]]
-        ans = []
+        queue = [[root]]
+        answer = []
         idx = 0
         
-        while stk:
+        while queue:
             
-            stT = []
+            current_stack = []
             anT = []
-            temp = stk.pop(0)
+            current = queue.pop(0)
             
-            for n in temp:
-                anT.append(n.val)
+            for node in current:
+                anT.append(node.val)
                 
-                if n.left:
-                    stT.append(n.left)
-                if n.right:
-                    stT.append(n.right)
+                if node.left:
+                    current_stack.append(node.left)
+                if node.right:
+                    current_stack.append(node.right)
                     
             if anT:
                 if idx % 2 == 1:
-                    ans.append(anT[::-1])
+                    answer.append(anT[::-1])
                 else:
-                    ans.append(anT)
-            if stT:
-                stk.append(stT)
+                    answer.append(anT)
+                    
+            if current_stack:
+                queue.append(current_stack)
             
             idx += 1
         
-        return ans
+        return answer
                     
                     
             
