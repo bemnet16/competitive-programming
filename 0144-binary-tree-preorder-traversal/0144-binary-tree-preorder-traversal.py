@@ -5,25 +5,16 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    
+    def __init__(self):
+        self.answer = []
+    
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         
-        if not root: return []
+        if root:
+            self.answer.append(root.val)
+            self.preorderTraversal(root.left)
+            self.preorderTraversal(root.right)
         
-        stk = []
-        answer = []
-        stk.append(root)
-        
-        while stk:
-            
-            cur = stk.pop()
-            answer.append(cur.val)
-            
-            if cur.right:
-                stk.append(cur.right)
-            
-            if cur.left:
-                stk.append(cur.left)
-        
-        return answer
-        
+        return self.answer
         
