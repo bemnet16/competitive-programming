@@ -8,16 +8,18 @@ class Solution:
     
     def __init__(self):
         self.vals = None
-        self.c = 0
+        self.count = 0
         
     def inorderSearch(self, root, k):
         if root:
             self.inorderSearch(root.left, k)
-            self.c += 1
-            if self.c == k:
+            self.count += 1
+            if self.count == k:
                 self.vals = root.val
+                return
             self.inorderSearch(root.right, k)
         return root
+    
     
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         
