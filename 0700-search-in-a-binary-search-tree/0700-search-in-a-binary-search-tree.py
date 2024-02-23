@@ -13,9 +13,8 @@ class Solution:
         if val < root.val:
             return self.searchBST(root.left, val)
         
-        elif val > root.val:
+        if val > root.val:
             return self.searchBST(root.right, val)
         
-        else:
-            return root
+        return root
         
