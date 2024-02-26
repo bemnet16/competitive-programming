@@ -1,6 +1,9 @@
 class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
         
+        if len(cookies) == k:
+            return max(cookies)
+        
         answer = float("inf")
         mx = float("-inf")
         
