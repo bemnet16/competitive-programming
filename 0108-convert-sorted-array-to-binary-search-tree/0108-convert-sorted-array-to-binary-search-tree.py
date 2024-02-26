@@ -7,23 +7,20 @@
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         
-        def f(lis):
+        def divide_conquer(arr, left, right):
             
-            if not lis:
+            if left > right:
                 return None
             
-            if len(lis) == 1:
-                return TreeNode(lis[0])
+            mid = left + (right - left) // 2
+            node = TreeNode(arr[mid])
             
-            mid = len(lis) // 2
-            new_node = TreeNode(lis[mid])
+            node.left = divide_conquer(arr, left, mid - 1)
+            node.right = divide_conquer(arr, mid + 1, right)
             
-            new_node.left = f(lis[:mid])
-            new_node.right = f(lis[mid + 1:])
-            
-            return new_node
+            return node
         
-        return f(nums)
+        return divide_conquer(nums, 0, len(nums) - 1)
             
             
         
