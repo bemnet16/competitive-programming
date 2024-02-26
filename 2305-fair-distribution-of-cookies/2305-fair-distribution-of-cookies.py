@@ -1,8 +1,10 @@
 class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
         
+        # there is no need to go to back track if the length of cookies and the number of k are equal
         if len(cookies) == k:
             return max(cookies)
+        
         
         answer = float("inf")
         mx = float("-inf")
@@ -20,12 +22,17 @@ class Solution:
                 return
             
             for person in range(k):
+                
                 distrib[person] += cookies[index]
-                p_mx = mx
+                
+                restore_mx = mx
                 mx = max(mx, distrib[person])
+                
                 backtrack(index + 1, distrib)
                 distrib[person] -= cookies[index]
-                mx = p_mx
+                
+                # reset the maximum to the previous maximum value after it return from backtracking
+                mx = restore_mx
                 
             
         
