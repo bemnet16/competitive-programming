@@ -25,7 +25,6 @@ class Solution:
             
             self.temp //= 10
         
-        return root
                 
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         
