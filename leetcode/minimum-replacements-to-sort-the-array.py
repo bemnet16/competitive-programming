@@ -7,9 +7,9 @@ class Solution:
         for i in range(len(nums) - 2, -1, -1):
             
             if nums[i] > current_value:
-                space = ceil(nums[i] / current_value)
-                answer += (space - 1)
-                current_value = nums[i] // space
+                space = ceil(nums[i] / current_value)  # divde optimaly within the space
+                answer += (space - 1)      # perfomed space - 1 operations
+                current_value = nums[i] // space  # the minimum value after the operation
                 
             else:
                 current_value = nums[i]
