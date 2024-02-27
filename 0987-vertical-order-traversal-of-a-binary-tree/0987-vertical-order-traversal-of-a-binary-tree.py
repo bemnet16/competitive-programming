@@ -29,8 +29,6 @@ class Solution:
                 root.right.val = (root.right.val, (row + 1), (col + 1))
                 self.vertical(root.right)
                 
-        # return root
-    
     
         
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
