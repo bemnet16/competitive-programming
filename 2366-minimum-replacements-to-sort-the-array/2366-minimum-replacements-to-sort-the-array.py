@@ -2,14 +2,16 @@ class Solution:
     def minimumReplacement(self, nums: List[int]) -> int:
         
         answer = 0
-        temp = nums[-1]
+        current_value = nums[-1]
         
-        for i in range(len(nums) - 1, -1, -1):
-            space = ceil(nums[i] / temp)
-            answer += (space - 1)
-            temp = nums[i] // space
+        for i in range(len(nums) - 2, -1, -1):
+            
+            if nums[i] > current_value:
+                space = ceil(nums[i] / current_value)  # divde optimaly within the space
+                answer += (space - 1)      # perfomed space - 1 operations
+                current_value = nums[i] // space  # the minimum value after the operation
+                
+            else:
+                current_value = nums[i]
         
         return answer
-            
-        
-       
