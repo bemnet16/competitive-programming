@@ -16,8 +16,8 @@ class Solution:
             self.values.append(root.val)
             self.inorderSearch(root.right)
         
-        return self.values
-    
+        
+        
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
         self.inorderSearch(root)
