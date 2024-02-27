@@ -25,7 +25,7 @@ class Solution:
         
         
         
-        def backtrack(combination):
+        def backtrack(combination, count_open, count_close):
             
             if len(combination) == (2 * n):
                 
@@ -34,12 +34,38 @@ class Solution:
                     combinations.append("".join(temp))
                 return
             
+            if count_open > n or count_close > n:
+                return
+            
             for par in Parentheses:
+                
+                if par == '(':
+                    count_open += 1
+                else:
+                    count_close += 1
+                
                 combination.append(par)
-                backtrack(combination)
-                combination.pop()
+                
+                backtrack(combination, count_open, count_close)
+                
+                popped = combination.pop()
+                if popped == '(':
+                    count_open -= 1
+                else:
+                    count_close -= 1
+                
             
         
-        backtrack([])
+        backtrack([], 0, 0)
         return combinations
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
                 
