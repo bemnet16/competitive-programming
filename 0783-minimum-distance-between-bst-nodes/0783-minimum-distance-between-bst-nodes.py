@@ -8,16 +8,15 @@ class Solution:
     def minDiffInBST(self, root: Optional[TreeNode]) -> int:
         
         self.min_diff = float("inf")
-        self.pre_node = None
+        self.pre_node = -100000000000
         
         def dfs(root):
             
             if root:
                 dfs(root.left)
                 
-                if self.pre_node:
-                    self.min_diff = min(self.min_diff, root.val - self.pre_node.val)
-                self.pre_node = root
+                self.min_diff = min(self.min_diff, root.val - self.pre_node)
+                self.pre_node = root.val
                 
                 dfs(root.right)
         
