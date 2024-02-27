@@ -5,30 +5,28 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    
-    def __init__(self):
-        self.values = []
-        
-    def inorderSearch(self,root):
-        
-        if root:
-            self.inorderSearch(root.left)
-            self.values.append(root.val)
-            self.inorderSearch(root.right)
-        
-        
-        
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
-        self.inorderSearch(root)
+        pre_node = None
+        isValid = True
         
-        temp = self.values.copy()
-        s = set(temp)
         
-        if len(s) != len(self.values):
-            return False
+        def dfs(root):
+            
+            nonlocal pre_node
+            nonlocal isValid
+            
+            if root:
+                
+                dfs(root.left)
+                
+                if pre_node:
+                    isValid = isValid and (pre_node.val < root.val)
+                pre_node = root
+                
+                dfs(root.right)
         
-        temp.sort()
         
-        return temp == self.values
-        
+        dfs(root)
+        return isValid
+            
