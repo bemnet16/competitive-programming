@@ -3,24 +3,23 @@ class Solution:
         
         answer = []
         
-        def backtrack(idx, sub):
+        def backtrack(idx, sub, sm):
             
-            s_sub = sum(sub)
-            
-            if s_sub == target:
+            if sm == target:
                 temp = sub.copy()
                 temp.sort()
                 if temp not in answer:
                     answer.append(temp)
                 return
             
-            if s_sub > target:
+            if sm > target:
                 return
             
             for i in range(len(candidates)):
                 sub.append(candidates[i])
-                backtrack(i + 1, sub)
-                sub.pop()
+                sm += candidates[i]
+                backtrack(i + 1, sub, sm)
+                sm -= sub.pop()
             
-        backtrack(0, [])
+        backtrack(0, [], 0)
         return answer
