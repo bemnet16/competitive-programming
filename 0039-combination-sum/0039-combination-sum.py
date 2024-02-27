@@ -1,15 +1,15 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         
-        answer = []
+        self.answer = set()
         
         def backtrack(idx, sub, sm):
             
             if sm == target:
                 temp = sub.copy()
                 temp.sort()
-                if temp not in answer:
-                    answer.append(temp)
+                if tuple(temp) not in self.answer:
+                    self.answer.add(tuple(temp))
                 return
             
             if sm > target:
@@ -22,4 +22,4 @@ class Solution:
                 sm -= sub.pop()
             
         backtrack(0, [], 0)
-        return answer
+        return self.answer
