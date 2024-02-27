@@ -3,7 +3,7 @@ class Solution:
         
         answer = []
         
-        def backtrack(index, permut):
+        def backtrack(permut):
             
             if len(permut) == len(nums):
                 answer.append(permut.copy())
@@ -13,8 +13,8 @@ class Solution:
                 if nums[i] in permut:
                     continue
                 permut.append(nums[i])
-                backtrack(i + 1, permut)
+                backtrack(permut)
                 permut.pop()
             
-        backtrack(0, [])
+        backtrack([])
         return answer
