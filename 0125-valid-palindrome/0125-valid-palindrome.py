@@ -6,10 +6,10 @@ class Solution:
         
         while left <= right:
             
-            if (not (s[left].isalpha() or s[left].isdigit())) or (s[left] == " "):
+            if not (s[left].isalpha() or s[left].isdigit()):
                 left += 1
             
-            elif (not (s[right].isalpha() or s[right].isdigit())) or (s[right] == " "):
+            elif not (s[right].isalpha() or s[right].isdigit()):
                 right -= 1
             
             elif s[left].lower() != s[right].lower():
