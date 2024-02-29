@@ -1,14 +1,29 @@
 class Solution:
-    def PredictTheWinner(self, nums):
+    def predictTheWinner(self, nums: List[int]) -> bool:
         
-        if len(nums) <= 2:
-            return True
-        pre = list(nums)
-        cur = list(nums)
-        for size in range(1, len(pre)):
-            for i in range(len(pre) - size):
-                j = i + size
-                cur[j] = max(nums[i] - pre[j], nums[j] - pre[j - 1])
-            pre = list(cur)
-
-        return cur[-1] >= 0
+        @cache
+        def maxScore(left, right, turn):
+            
+            if left > right:
+                return 0
+            
+            
+            if turn:
+                
+                option_1 = nums[left] + maxScore(left + 1, right, not turn) 
+                option_2 = nums[right] + maxScore(left, right - 1, not turn)
+            
+                return max(option_1, option_2)
+            
+            
+            else:
+                
+                option_1 = -nums[left] + maxScore(left + 1, right, not turn)
+                option_2 = -nums[right] + maxScore(left, right - 1, not turn)
+                
+                return min(option_1, option_2)
+        
+        
+        score = maxScore(0, len(nums) - 1, True)
+        
+        return score >= 0
