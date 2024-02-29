@@ -9,6 +9,8 @@ class Solution:
         p_dict = defaultdict(int)
         s_dict = defaultdict(int)
         
+        # to perform comparison / check equality / of the two dicts 
+        # initialize both 'p' and 's' dict with all lowercase letters with '0' value 
         for i in range(97, 123):
             char = chr(i)
             p_dict[char] = 0
