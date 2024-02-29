@@ -6,6 +6,7 @@ class Solution:
         def backtrack(idx, sub, sm):
             
             if sm == target:
+                
                 temp = sub.copy()
                 temp.sort()
                 if tuple(temp) not in self.answer:
@@ -16,6 +17,11 @@ class Solution:
                 return
             
             for i in range(len(candidates)):
+                
+                # doesn't matter if they are the same we should not repeat it
+                if i >= 1 and candidates[i] == candidates[i - 1]:
+                    continue
+                
                 sub.append(candidates[i])
                 sm += candidates[i]
                 backtrack(i + 1, sub, sm)
