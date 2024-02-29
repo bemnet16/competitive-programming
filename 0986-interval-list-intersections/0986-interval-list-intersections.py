@@ -29,14 +29,10 @@ class Solution:
             if f_end < s_end:
                 f_pointer += 1
             
-            elif f_end > s_end:
-                s_pointer += 1
-            
             else:
-                if f_start < s_start:
-                    f_pointer += 1
-                else:
-                    s_pointer += 1
-        
+                s_pointer += 1
+
+                
+                
         return answer.keys()
         
