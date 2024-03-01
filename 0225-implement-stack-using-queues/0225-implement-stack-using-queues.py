@@ -8,9 +8,6 @@ class MyStack(object):
         self.q1.append(x)
 
     def pop(self):
-        # for i in range(len(self.q1) - 1):
-            # self.q2.append(self.q1.pop(0))
-        # self.q1, self.q2 = self.q2,self.q1
         return self.q1.pop()
             
 
