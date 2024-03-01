@@ -1,8 +1,7 @@
-class MyStack(object):
+class MyStack:
 
     def __init__(self):
         self.q1 = []
-        self.q2 = []
 
     def push(self, x):
         self.q1.append(x)
@@ -19,6 +18,7 @@ class MyStack(object):
         if len(self.q1) == 0:
             return True
         return False
+        
 
 
 # Your MyStack object will be instantiated and called as such:
