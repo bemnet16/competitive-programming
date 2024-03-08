@@ -15,8 +15,7 @@ class Solution:
                 
         for key, val in freq_track.items():
             
-            if val == max_freq:
-                total_freq += val
+            total_freq += (val if val == max_freq else 0)
         
         
         
