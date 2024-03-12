@@ -6,12 +6,10 @@
 class Solution:
     def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        demmy = ListNode()
-        demmy.next = head
+        dummy = ListNode()
+        dummy.next = head
         
-        
-        start = demmy
-        
+        start = dummy
         
         while start:
             end = start.next
@@ -27,7 +25,7 @@ class Solution:
             start = start.next
         
         
-        return demmy.next
+        return dummy.next
         
                 
             
