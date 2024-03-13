@@ -4,24 +4,21 @@
 class Solution:
     def firstBadVersion(self, n: int) -> int:
         
-        first_bad = float("inf")
-        
-        left = 0
+        left = 1
         right = n
         
-        while left <= right:
+        while left < right:
             
-            mid = (left + right) // 2
+            mid = left + (right - left) // 2
             
             if isBadVersion(mid):
-                first_bad = min(first_bad, mid)
-                right = mid - 1
+                right = mid
             else:
                 left = mid + 1
         
         
         
-        return first_bad
+        return right
                 
             
         
