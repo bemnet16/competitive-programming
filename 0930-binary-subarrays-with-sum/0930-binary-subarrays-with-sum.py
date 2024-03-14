@@ -1,14 +1,20 @@
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
-        res, acc = 0, 0
-        trk = defaultdict(int)
+        
+        
+        di = defaultdict(int)
+        di[0] = 1
+        pre = 0
+        ans = 0
         
         for i in range(len(nums)):
-            acc += nums[i]
-            if acc == goal:
-                res += 1
-            if acc - goal in trk:
-                res += trk[acc - goal]
-            trk[acc] += 1
+            
+            pre += (nums[i] == 1)
+            
+            ans += di[pre - goal]
+            
+            di[pre] += 1
+            
         
-        return res
+        
+        return ans
