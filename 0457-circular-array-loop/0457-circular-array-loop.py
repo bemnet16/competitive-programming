@@ -5,20 +5,19 @@ class Solution:
             
             seq = set()
             start = i
-            next_idx = i
+            cur_index = i
             direction = "Forward" if nums[i] > 0 else "Backward"
             
-            while next_idx not in seq:
+            while cur_index not in seq:
                 
-                if (direction == "Forward" and nums[next_idx] < 0) or (direction == "Backward" and nums[next_idx] > 0):
+                if (direction == "Forward" and nums[cur_index] < 0) or (direction == "Backward" and nums[cur_index] > 0):
                     break
                 
-                seq.add(next_idx)
-                next_idx = (next_idx + nums[next_idx]) % len(nums)
+                seq.add(cur_index)
+                cur_index = (cur_index + nums[cur_index]) % len(nums)
             
             
-            if next_idx == start and len(seq) > 1:
-                
+            if cur_index == start and len(seq) > 1:
                 return True
         
         
