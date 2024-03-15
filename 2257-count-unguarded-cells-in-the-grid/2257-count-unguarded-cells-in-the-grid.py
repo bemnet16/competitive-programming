@@ -14,6 +14,7 @@ class Solution:
         for row in range(m):
             
             rowf_guarded = False
+            rowb_guarded = False
             
             for col in range(n):
                 
@@ -31,12 +32,6 @@ class Solution:
                 elif rowf_guarded:
                     grid[row][col] = "g"
                     
-                    
-        for row in range(m):
-            
-            rowb_guarded = False
-            
-            for col in range(n):
                 
                 grid_val = grid[row][n - col - 1]
                 
@@ -56,6 +51,8 @@ class Solution:
             
             colf_guarded = False
             
+            colb_guarded = False
+            
             for row in range(m):
                 
                 grid_val = grid[row][col]
@@ -71,13 +68,7 @@ class Solution:
                 
                 elif colf_guarded:
                     grid[row][col] = "g"
-                    
-                    
-        for col in range(n):
             
-            colb_guarded = False
-            
-            for row in range(m):   
                 
                 grid_val = grid[m - row - 1][col]
                 
