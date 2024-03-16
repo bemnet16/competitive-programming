@@ -13,7 +13,7 @@ class Solution:
             if count in track:
                 maxlen = max(maxlen, (i - track[count]))
         
-            if count not in track:
+            else:
                 track[count] = i
                 
                 
