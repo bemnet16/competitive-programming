@@ -3,8 +3,6 @@ class Solution:
         
         def merge(left_half, right_half):
             
-            left_half.append(float("inf"))
-            right_half.append(float("inf"))
             merged_arr = []
             left_pointer = 0
             right_pointer = 0
@@ -19,10 +17,9 @@ class Solution:
                     merged_arr.append(right_half[right_pointer])
                     right_pointer += 1
             
-            # merged_arr.extend(left_half[left_pointer:])
-            # merged_arr.extend(right_half[right_pointer:])
+            merged_arr.extend(left_half[left_pointer:])
+            merged_arr.extend(right_half[right_pointer:])
             
-            merged_arr.pop()
             return merged_arr
         
         
