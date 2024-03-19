@@ -9,7 +9,7 @@ class Solution:
             
             while left_pointer < len(left_half) and right_pointer < len(right_half):
                 
-                if left_half[left_pointer] < right_half[right_pointer]:
+                if left_half[left_pointer] <= right_half[right_pointer]:
                     merged_arr.append(left_half[left_pointer])
                     left_pointer += 1
                 
