@@ -1,21 +1,21 @@
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
         
-        temp = []
+        distance = []
         
-        for i in arr:
-            temp.append(abs(i - x))
+        for num in arr:
+            distance.append(abs(num - x))
         
-        l = 0
+        start = 0
         
         for i in range(k, len(arr)):
             
-            if temp[i] < temp[l]:
-                while i - l + 1 > k:
-                    l += 1
+            if distance[i] < distance[start]:
+                while i - start + 1 > k:
+                    start += 1
             
         
-        return arr[l: l + k]
+        return arr[start: start + k]
             
         
         
