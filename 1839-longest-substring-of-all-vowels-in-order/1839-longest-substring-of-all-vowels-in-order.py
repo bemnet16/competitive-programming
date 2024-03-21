@@ -1,9 +1,7 @@
-from collections import OrderedDict
 class Solution:
     def longestBeautifulSubstring(self, word: str) -> int:
         
         vowels = 'aeiou'
-        
         
         def check(s):
             
