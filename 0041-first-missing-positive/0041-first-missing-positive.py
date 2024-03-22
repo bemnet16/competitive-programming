@@ -8,6 +8,7 @@ class Solution:
             while i != (nums[i] - 1):
                 
                 temp = nums[i] - 1
+                # give the correct position for the numbers that are within the range
                 if 0 < nums[i] and nums[i] < n:
                     
                     if nums[i] == nums[temp]:
@@ -15,10 +16,9 @@ class Solution:
                         
                     nums[i], nums[temp] = nums[temp], nums[i]
                     
-                    
-                
                 else:
                     break
+        
         
         for i, num in enumerate(nums):
             
