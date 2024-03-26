@@ -1,14 +1,22 @@
 class Solution:
     def arrangeCoins(self, n: int) -> int:
         
-        rows = 0
-        pre = 1
+        low = 0
+        high = n
         
-        while n - pre >= 0:
-            rows += 1
-            n -= pre
-            pre += 1
-        
-        
-        return rows
+        while low <= high:
             
+            mid = low + (high - low) // 2
+            
+            s = mid * (mid + 1) // 2
+            
+            if s < n:
+                low = mid + 1
+            
+            elif s > n:
+                high = mid - 1
+            
+            else:
+                return mid
+        
+        return high
