@@ -5,15 +5,15 @@ class Solution:
         
         for s in strs:
             
-            charcount = defaultdict(int)
+            charcount = [0] * 26
             
             for char in s:
-                charcount[char] += 1
+                charcount[ord(char) - ord('a')] += 1
             
             
-            charcount = tuple(sorted(charcount.items(), key=lambda x:x[0]))
-            anagrams[charcount].append(s)
-        
+            anagrams[tuple(charcount)].append(s)
+
+
         
         return anagrams.values()
         
