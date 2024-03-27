@@ -1,6 +1,9 @@
 class Solution:
     def countPrimes(self, n: int) -> int:
         
+        ### Sieve of Eratosthenes
+        
+        
         sieve_matrix = [1 for _ in range(n)]
         count = 0
         
