@@ -5,7 +5,10 @@ class Solution:
         
         for char in t:
             
-            if s_index < len(s) and s[s_index] == char:
+            if s_index == len(s):
+                break
+                
+            if s[s_index] == char:
                 s_index += 1
         
         
