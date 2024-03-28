@@ -1,22 +1,16 @@
 class Solution:
     def isUgly(self, n: int) -> bool:
         
-        while n >= 1:
-            
-            if n % 2 == 0:
-                n //=2
-            
-            elif n % 3 == 0:
-                n //= 3
-            
-            elif n % 5 == 0:
-                n //=5
-            
-            elif n == 1:
-                return True
-            
-            else:
-                return False
+        if n <= 0:
+            return False
         
+        while not n % 2:
+            n //= 2
         
-        # return False
+        while not n % 3:
+            n //=3
+        
+        while not n % 5:
+            n //= 5
+        
+        return True if n == 1 else False
