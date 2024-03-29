@@ -24,6 +24,8 @@ class Solution:
             
             else:
                 break
+                
+                
         
         if nums[low] == target:
             return low
@@ -40,6 +42,8 @@ class Solution:
         else:
             low = low + 1
             high = len(nums) - 1
+            
+            
             
         
         while low <= high:
