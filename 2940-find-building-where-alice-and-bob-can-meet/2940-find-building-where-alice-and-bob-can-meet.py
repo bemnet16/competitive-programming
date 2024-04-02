@@ -1,53 +1,55 @@
 class Solution:
     def leftmostBuildingQueries(self, heights: List[int], queries: List[List[int]]) -> List[int]:
         
-        stk = []
+        ### Monotonic stack approach ###
+        
+        # update heights to hold there index with there height value.
+        # add '-1' for heights that has no larger height on the right.
+
+        stack = []
+
         for i,  height in enumerate(heights):
             
-            while stk and heights[stk[-1]] < height:
-                heights[stk[-1]] = (heights[stk[-1]], i)
-                stk.pop()
-            
-            stk.append(i)
+            while stack and heights[stack[-1]] < height:
+                heights[stack[-1]] = (heights[stack[-1]], i)
+                stack.pop()
+            stack.append(i)
         
-        while stk:
-            heights[stk[-1]] = (heights[stk[-1]], -1)
-            stk.pop()
+        while stack:
+            heights[stack[-1]] = (heights[stack[-1]], -1)
+            stack.pop()
         
+
         
         answer = []
         
-        for a, b in queries:
+        for alice, bob in queries:
             
-            a, b = min(a, b),  max(a, b)
+            alice, bob = min(alice, bob), max(alice, bob)
             
-            if a == b:
-                answer.append(a)
+            if alice == bob:
+                answer.append(alice)
             
-            elif a < b and heights[a][0] < heights[b][0]:
-                answer.append(b)
+            elif heights[alice][0] < heights[bob][0]:
+                answer.append(bob)
             
-            elif b < a and heights[b][0] < heights[a][0]:
-                answer.append(a)
-            
+            elif heights[alice][0] == heights[bob][0]:
+                answer.append(heights[bob][1])
+
+            elif heights[alice][1] == -1 or heights[bob][1] == -1:
+                answer.append(-1)
+
             else:
-                if heights[a][1] == -1 or heights[b][1] == -1:
-                    answer.append(-1)
-                    
-                elif heights[a][0] <= heights[b][0]:
-                    answer.append(heights[b][1])
-                
-                else:
-                    mx = heights[b]
-                    while heights[a][0] >= heights[mx[1]][0]:
-                        if heights[mx[1]][1] == -1:
-                            mx = (-1, -1)
-                            break
-                            
-                        mx = heights[mx[1]]
+                maxHeight = heights[bob]
+                while heights[alice][0] >= heights[maxHeight[1]][0]:
+                    if heights[maxHeight[1]][1] == -1:
+                        maxHeight = (-1, -1)
+                        break
                         
-                    answer.append(mx[1])
+                    maxHeight = heights[maxHeight[1]]
                     
+                answer.append(maxHeight[1])
+                
                 
         return answer
         
@@ -99,7 +101,7 @@ class Solution:
 #                 answer[i] = bob
             
 #             else:
-#                 mx = max(heights[alice], heights[bob])
+#                 maxHeight = max(heights[alice], heights[bob])
                 
 #                 low = 0
 #                 high = len(heights) - 1
@@ -110,7 +112,7 @@ class Solution:
                     
 #                     height, idx = sortedHeights[mid]
 
-#                     if height <= mx:
+#                     if height <= maxHeight:
 #                         low = mid + 1
                     
 #                     else:
