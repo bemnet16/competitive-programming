@@ -1,27 +1,54 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
         
-        n = len(height)
+        left = 0
+        right = len(height) - 1
         
-        limit = [[0, 0] for _ in range(n)]
+        left_max = height[0]
+        right_max = height[len(height) - 1]
         
-        for i in range(n):
+        rainWater = 0
+        
+        while left < right:
             
-            if (i + 1) < n:
-                limit[i + 1][0] = max(limit[i][0], height[i])
+            if height[right] < height[left]:
+                right -= 1
+                right_max = max(right_max, height[right])
+                rainWater += right_max - height[right]
             
-            if (n - i - 2) > 0:
-                limit[n - i - 2][1] = max(height[n - i - 1], limit[n - i - 1][1])
+            else:
+                left += 1
+                left_max = max(left_max, height[left])   
+                rainWater += left_max - height[left]
+        
+        return rainWater
         
         
-        rainTrap = 0
-        for i in range(1, n - 1):
+        
+        
+        
+        
+#         n = len(height)
+        
+#         limit = [[0, 0] for _ in range(n)]
+        
+#         for i in range(n):
             
-            water = min(limit[i]) - height[i]
+#             if (i + 1) < n:
+#                 limit[i + 1][0] = max(limit[i][0], height[i])
             
-            if water > 0:
-                rainTrap += water
+#             if (n - i - 2) > 0:
+#                 limit[n - i - 2][1] = max(height[n - i - 1], limit[n - i - 1][1])
         
         
-        return rainTrap
+#         rainTrap = 0
+#         for i in range(1, n - 1):
+            
+#             water = min(limit[i]) - height[i]
+            
+#             if water > 0:
+#                 rainTrap += water
+        
+        
+#         return rainTrap
                 
