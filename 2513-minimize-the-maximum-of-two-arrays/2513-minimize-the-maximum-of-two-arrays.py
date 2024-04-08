@@ -14,12 +14,12 @@ class Solution:
         low = 0
         high = 10 ** 10
         
-        while low < high:
+        while low <= high:
             
             mid = low + (high - low) // 2
             
             if canMake(mid):
-                high = mid
+                high = mid - 1
             
             else:
                 low = mid + 1
