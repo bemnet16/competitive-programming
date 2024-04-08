@@ -1,4 +1,27 @@
-import math 
+import math
+
+class Solution:
+    def kthFactor(self, n: int, k: int) -> int:
+        
+        for i in range(1, int(math.sqrt(n)) + 1):
+            
+            if not (n % i):
+                k -= 1
+            
+            if not k:
+                return i
+        
+        for i in range(int(math.sqrt(n)), 0, -1):
+            
+            if not (n % (n // i)):
+                k -= 1
+            
+            if not k:
+                return n // i
+        
+        return -1
+    
+    import math 
 class Solution: 
     def kthFactor(self, n: int, k: int) -> int:
         root = math.sqrt(n)
@@ -15,3 +38,6 @@ class Solution:
             if k == 0: 
                 return n//j
         return -1   
+                
+            
+        
