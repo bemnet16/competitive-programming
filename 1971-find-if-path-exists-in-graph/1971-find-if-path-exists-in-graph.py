@@ -17,9 +17,7 @@ class Solution:
             visited.add(src)
             for neighbor in GRAPH[src]:
                 if neighbor not in visited:
-                    result = dfs(neighbor)
-                    
-                    if result:
+                    if dfs(neighbor):
                         return True
             
         
