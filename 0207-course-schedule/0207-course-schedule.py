@@ -22,8 +22,6 @@ class Solution:
             
             colors[node] = 2
             return True
-            
-        
         
         
         for course in GRAPH:
