@@ -2,7 +2,6 @@ class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         
         colors = ["white" for _ in range(len(graph))]
-        colors[0] = "blue"
         visited = set()
         
         
