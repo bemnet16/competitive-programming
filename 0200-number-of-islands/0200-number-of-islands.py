@@ -10,10 +10,6 @@ class Solution:
         
         def dfs(row, col):
             
-            if grid[row][col] == "0":
-                return
-            
-            
             grid[row][col] = "0"
             for row_change, col_change in DIRECTIONS:
                 
