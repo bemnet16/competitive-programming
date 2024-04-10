@@ -6,7 +6,6 @@ class Solution:
         def dfs(node):
             
             visited[node] = True
-            isConnected[node][node] = 0
             
             for neighbour in range(len(isConnected[node])):
                 if not visited[neighbour] and isConnected[node][neighbour]:
