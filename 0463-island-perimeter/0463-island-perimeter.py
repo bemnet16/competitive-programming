@@ -10,13 +10,13 @@ class Solution:
             return (0 <= row < len(grid)) and (0 <= col < len(grid[0]))
         
         
-        answer = 0
+        perimeter = 0
         def dfs(row, col):
             
-            nonlocal answer
+            nonlocal perimeter
             
             if not grid[row][col]:
-                answer += 1
+                perimeter += 1
                 return
             
             
@@ -33,17 +33,15 @@ class Solution:
                     dfs(new_row, new_col)
                 
                 elif not bounded:
-                    answer += 1
+                    perimeter += 1
         
-        index = []
+
+        
         for row in range(len(grid)):
             for col in range(len(grid[0])):
                 if grid[row][col]:
-                    index = [row, col]
-        
-
-        if index: dfs(index[0], index[1])
-        return answer
+                    dfs(row, col)
+                    return perimeter
     
     
     
