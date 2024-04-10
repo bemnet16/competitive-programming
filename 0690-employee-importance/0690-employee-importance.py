@@ -10,12 +10,10 @@ class Employee:
 class Solution:
     def getImportance(self, employees: List['Employee'], id: int) -> int:
         
-        importances = defaultdict(int)
-        employee_graph = defaultdict(set)
+        employee_graph = defaultdict(tuple)
         
-        for i in range(len(employees)):
-            importances[employees[i].id] = employees[i].importance
-            employee_graph[employees[i].id] = set(employees[i].subordinates)
+        for employee in employees:
+            employee_graph[employee.id] = (employee.importance, set(employee.subordinates))
         
         
         
@@ -25,10 +23,10 @@ class Solution:
             
             nonlocal total_importance
             
-            total_importance += importances[employee_id]
+            total_importance += employee_graph[employee_id][0]
 
             
-            for subordinate_id in employee_graph[employee_id]:
+            for subordinate_id in employee_graph[employee_id][1]:
                 dfs(subordinate_id)
                     
         
