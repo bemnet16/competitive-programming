@@ -11,9 +11,7 @@ class Solution:
             
         
         deadends = set(deadends)
-        level = []
-        if not "0000" in deadends:
-            level.append("0000")
+        level = ["0000"] if "0000" not in deadends else []
         visited = set(["0000"])
         turns = -1
         
@@ -24,6 +22,7 @@ class Solution:
             turns += 1
             
             for lock in level:
+                
                 
                 if lock == target:
                     return turns
