@@ -27,7 +27,7 @@ class Solution:
                     new_row = row + row_change
                     new_col = col + col_change
                     
-                    if not (new_row, new_col) in visited and inbound(new_row, new_col) and not grid[new_row][new_col]:
+                    if inbound(new_row, new_col) and not((new_row, new_col) in visited or grid[new_row][new_col]):
                         visited.add((new_row, new_col))
                         next_level.append((new_row, new_col))
                         
