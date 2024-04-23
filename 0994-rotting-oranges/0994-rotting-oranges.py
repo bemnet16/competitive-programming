@@ -10,14 +10,12 @@ class Solution:
         
         queue = []
         fresh = 0
-        visited = set()
         minutes = -1
         
         for row in range(len(grid)):
             for col in range(len(grid[0])):
                 if grid[row][col] == 2:
                     queue.append((row, col))
-                    visited.add((row, col))
                 
                 elif grid[row][col] == 1:
                     fresh += 1
@@ -37,10 +35,10 @@ class Solution:
                     new_row = row + row_change
                     new_col = col + col_change
                     
-                    if inbound(new_row, new_col) and (new_row, new_col) not in visited and grid[new_row][new_col] == 1:
+                    if inbound(new_row, new_col) and grid[new_row][new_col] == 1:
                         
                         nx_queue.append((new_row, new_col))
-                        visited.add((new_row, new_col))
+                        grid[new_row][new_col] = 2
                         fresh -= 1
             
             minutes += 1
