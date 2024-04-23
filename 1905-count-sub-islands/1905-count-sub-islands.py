@@ -7,10 +7,11 @@ class Solution:
             return (0 <= row < len(grid1)) and (0 <= col < len(grid1[0]))
         
         
-        rc = []
+        positions = []
+        
         def dfs(row, col):
             
-            nonlocal rc
+            nonlocal positions
             
             grid2[row][col] = 0
             
@@ -20,14 +21,13 @@ class Solution:
                 new_col = col + col_change
                 
                 if inbound(new_row, new_col) and grid2[new_row][new_col] == 1:
-                    rc.append((new_row, new_col))
+                    positions.append((new_row, new_col))
                     dfs(new_row, new_col)
         
         
-        def check(rc):
-            
-            for r, c in rc:
-                if grid1[r][c] != 1:
+        def check(positions):
+            for row, col in positions:
+                if grid1[row][col] != 1:
                     return False
             return True
         
@@ -36,12 +36,16 @@ class Solution:
     
         for row in range(len(grid1)):
             for col in range(len(grid1[0])):
+                
                 if grid2[row][col] == 1:
-                    rc.append((row, col))
+                    
+                    positions.append((row, col))
                     dfs(row, col)
-                    if check(rc):
+                    
+                    if check(positions):
                         subIsland += 1
-                    rc = []
+                        
+                    positions = []
         
         
         return subIsland
