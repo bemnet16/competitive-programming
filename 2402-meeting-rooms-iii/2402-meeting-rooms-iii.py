@@ -32,4 +32,38 @@ class Solution:
         
         return countMeeting.index(mostMeet)
                 
-           
+                
+                
+                
+        
+        
+        
+        if n > len(meetings):
+            return 0
+        
+        meetings.sort(key=lambda x:x[0])
+        
+        mnHe = []
+        rooms = [0] * n
+        mx = 0
+        
+        for meeting in range(n):
+            heappush(mnHe, [meetings[meeting][1], meeting])
+            rooms[meeting] += 1
+            mx = max(mx, rooms[meeting])
+        
+        
+        for meeting in range(n, len(meetings)):
+            a, b = meetings[meeting]
+            c, i = heappop(mnHe)
+            
+            rooms[i] += 1
+            mx = max(mx, rooms[i])
+            dif = b - a
+            heappush(mnHe, [c + dif, i])
+        
+
+        print(mnHe)
+        return rooms.index(mx)
+        
+        
