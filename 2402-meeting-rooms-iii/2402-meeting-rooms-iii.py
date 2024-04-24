@@ -1,69 +1,26 @@
 class Solution:
     def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
         
-        meetings.sort(key=lambda x:x[0])
+        unused_rooms = [i for i in range(n)]
+        used_rooms = []
+        meeting_count = [0] * n
+        heapify(unused_rooms)
         
-        mostMeet = 0
-        roomAvailability = [0] * n
-        countMeeting = [0] * n
-        
-        for start, end in meetings:
+        for start, end in sorted(meetings):
             
-            minAvaIdx = 0
-            hasUnusedRoom = False
+            while used_rooms and used_rooms[0][0] <= start:
+                _, room = heappop(used_rooms)
+                heappush(unused_rooms, room)
             
-            for i, availability in enumerate(roomAvailability):
-                
-                if availability < roomAvailability[minAvaIdx]:
-                    minAvaIdx = i
-                
-                if availability <= start:
-                    hasUnusedRoom = True
-                    roomAvailability[i] = end
-                    countMeeting[i] += 1
-                    mostMeet = max(mostMeet, countMeeting[i])
-                    break
-            
-            if not hasUnusedRoom:
-                roomAvailability[minAvaIdx] += (end - start)
-                countMeeting[minAvaIdx] += 1
-                mostMeet = max(mostMeet, countMeeting[minAvaIdx])
+            if unused_rooms:
+                room = heappop(unused_rooms)
+                heappush(used_rooms, (end, room))
+                meeting_count[room] += 1
+            else:
+                e, room = heappop(used_rooms)
+                heappush(used_rooms, ((e + (end - start)), room))
+                meeting_count[room] += 1
         
         
-        return countMeeting.index(mostMeet)
-                
-                
-                
-                
-        
-        
-        
-        if n > len(meetings):
-            return 0
-        
-        meetings.sort(key=lambda x:x[0])
-        
-        mnHe = []
-        rooms = [0] * n
-        mx = 0
-        
-        for meeting in range(n):
-            heappush(mnHe, [meetings[meeting][1], meeting])
-            rooms[meeting] += 1
-            mx = max(mx, rooms[meeting])
-        
-        
-        for meeting in range(n, len(meetings)):
-            a, b = meetings[meeting]
-            c, i = heappop(mnHe)
-            
-            rooms[i] += 1
-            mx = max(mx, rooms[i])
-            dif = b - a
-            heappush(mnHe, [c + dif, i])
-        
-
-        print(mnHe)
-        return rooms.index(mx)
-        
+        return meeting_count.index(max(meeting_count))
         
