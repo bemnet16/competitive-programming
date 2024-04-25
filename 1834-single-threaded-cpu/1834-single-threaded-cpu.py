@@ -20,6 +20,7 @@ class Solution:
             answer.append(index)
             enqueue_time += processing_time
             
+            ## if the cpu is idle and there is a task
             if not minHeap and i < len(tasks) and tasks[i][0] > enqueue_time:
                 heappush(minHeap, (tasks[i][1], tasks[i][2]))
                 enqueue_time = tasks[i][0]
