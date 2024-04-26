@@ -15,7 +15,6 @@ class Solution:
                 
                 
         queue = deque()
-        visited = set()
         
         for node, degree in enumerate(outDegree):
             if degree == 0:
@@ -33,20 +32,11 @@ class Solution:
                 answer.append(node)
                 
                 for neighbour in newGraph[node]:
-                    
-                    if neighbour not in visited:
                         
-                        if outDegree[neighbour] == 1:
+                        outDegree[neighbour] -= 1
+                        if outDegree[neighbour] == 0:
                             queue.append(neighbour)
-                            visited.add(neighbour)
-                            outDegree[neighbour] = 0
                             
-                        else:
-                            outDegree[neighbour] -= 1
-        
-        
-        
         
         return sorted(answer)
-                
                 
