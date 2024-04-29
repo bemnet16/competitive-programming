@@ -9,12 +9,14 @@ class Solution:
             graph[v].add(u)
         
         
-        noni = []
+        
+        strongest = []
         queue = deque()
         
         for i, deg in enumerate(inDegree):
             if deg == 0:
                 queue.append(i)
+        
         
         
         while queue:
@@ -24,17 +26,19 @@ class Solution:
                 node = queue.popleft()
                 
                 if not graph[node]:
-                    noni.append(node)
+                    strongest.append(node)
                     continue
                 
-                for nei in graph[node]:
+                for neighbour in graph[node]:
                     
-                    inDegree[nei] -= 1
+                    inDegree[neighbour] -= 1
                     
-                    if inDegree[nei] == 0:
-                        queue.append(nei)
+                    if inDegree[neighbour] == 0:
+                        queue.append(neighbour)
         
-        if len(noni) == 1:
-            return noni[0]
+        
+        
+        if len(strongest) == 1:
+            return strongest[0]
         return -1
         
