@@ -5,16 +5,14 @@ class Solution:
         
         for i in range(1, (n + 1)):
             
-            t = 1
+            count = 0
             
-            while i > 1:
+            while i > 0:
                 
-                if i & 1:
-                    t += 1
-                
-                i = i >> 1
+                count += 1
+                i = i & (i - 1)
             
-            answer.append(t)
+            answer.append(count)
         
         
         return answer
