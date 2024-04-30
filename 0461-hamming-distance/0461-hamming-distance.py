@@ -1,13 +1,17 @@
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
         
-        dis = 0
-        val = x ^ y
+        return bin(x ^ y).count('1')
         
-        while val:
+        
+        
+#         dis = 0
+#         val = x ^ y
+        
+#         while val:
             
-            dis += 1
-            val = val & (val - 1)
+#             dis += 1
+#             val = val & (val - 1)
         
-        return dis
+#         return dis
         
