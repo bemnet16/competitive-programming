@@ -1,25 +1,30 @@
 class Solution:
     def longestNiceSubstring(self, s: str) -> str:
         
-        def div(strs):
+        
+        start = 0
+        end = 0
+        
+        for i in range(len(s)):
             
-            if not strs or len(strs) < 2:
-                return ""
+            lowers = 0
+            uppers = 0
             
-            letrs = set(strs)
-            
-            for i, char in enumerate(strs):
+            for j in range(i, len(s)):
                 
-                if not (char.lower() in letrs and char.upper() in letrs):
-                    
-                    strs_1 = div(strs[:i])
-                    strs_2 = div(strs[i + 1:])
-                    
-                    if len(strs_1) >= len(strs_2):
-                        return strs_1
-                    return strs_2
-                    
-            return strs
-                        
-                        
-        return div(s)
+                char_ord = ord(s[j])
+                
+                if char_ord < 97:
+                    uppers |= 1 << (char_ord - 65)
+                
+                else:
+                    lowers |= 1 << (char_ord - 97)
+                
+                
+                if (lowers == uppers) and ((j - i + 1) > (end - start)):
+                    start = i
+                    end = j + 1
+        
+        
+        
+        return s[start:end]
