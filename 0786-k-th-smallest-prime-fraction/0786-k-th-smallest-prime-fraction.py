@@ -4,7 +4,7 @@ class Solution:
         heap = []
         
         for i in range(len(arr)):
-            for j in range(len(arr)):
+            for j in range(i + 1, len(arr)):
             
                 if len(heap) < k:
                     heappush(heap, (-arr[i] / arr[j], (arr[i], arr[j])))
