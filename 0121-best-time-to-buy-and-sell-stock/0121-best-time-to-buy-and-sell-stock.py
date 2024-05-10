@@ -34,33 +34,61 @@ class Solution:
         
         
         
-#         cache = [None] * len(prices)
-#         cache[-1] = 0
-        
-#         def dp(i):
+#         def dp(i, profit, state):
             
 #             nonlocal ans
             
 #             if i >= len(prices):
-#                 return 0
+#                 return
             
-#             mx = 0
-#             for j in range(i + 1, len(prices)):
-#                 if cache[j] != None:
-#                     dp_j = cache[j]
-#                 else:
-#                     dp_j = dp(j)
-#                     cache[j] = dp_j
-                    
-#                 mx = max(mx, prices[j] - prices[i]) 
             
-#             ans = max(ans, mx)
-#             return prices[i]
+#             if state == "N":
+#                 dp(i + 1, profit - prices[i], "B")
+#                 dp(i + 1, profit, "N")
+            
+            
+#             elif state == "B":
+#                 ans = max(ans, (profit + prices[i]))
+#                 dp(i + 1, profit, "B")
+            
+            
+            
+            
+        
         
 #         ans = 0
-#         # for stock in range(len(prices)):
-#         #     if prices[stock] != 0 and prices[stock] > ans:
-#         dp(0)
-            
-        
+#         dp(0, 0, "N")
 #         return ans
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
