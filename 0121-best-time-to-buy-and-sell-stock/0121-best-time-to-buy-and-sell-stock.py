@@ -2,22 +2,35 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         
         ans = 0
-        stk = []
+        heap = [prices[-1]]
         
-        i = 0
-        while i < len(prices):
+        for i in range(len(prices) - 2, -1, -1):
             
-            while stk and prices[i] < stk[-1]:
-                stk.pop()
+            ans = max(ans, (heap[0] - prices[i]))
+            heappushpop(heap, prices[i])
             
-            while i < len(prices) and stk and stk[-1] <= prices[i]:
-                ans = max(ans, (prices[i] - stk[-1]))
-                i += 1
             
-            if i < len(prices):
-                stk.append(prices[i])
-        
         return ans
+    
+    
+        
+#         ans = 0
+#         stk = []
+        
+#         i = 0
+#         while i < len(prices):
+            
+#             while stk and prices[i] < stk[-1]:
+#                 stk.pop()
+            
+#             while i < len(prices) and stk and stk[-1] <= prices[i]:
+#                 ans = max(ans, (prices[i] - stk[-1]))
+#                 i += 1
+            
+#             if i < len(prices):
+#                 stk.append(prices[i])
+        
+#         return ans
         
         
         
