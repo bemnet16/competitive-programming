@@ -6,9 +6,8 @@ class Solution:
         
         
         for coin in coins:
-            for i in range(1, amount + 1):
+            for i in range(coin, amount + 1):
                 
-                if i - coin >= 0:
                     lis[i] = min(lis[i], 1 + lis[i - coin])
         
         
