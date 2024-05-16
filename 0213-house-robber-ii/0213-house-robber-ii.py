@@ -7,29 +7,31 @@ class Solution:
         cache = {}
         
         
-        def dp(i, isFirst):
+        def dp(i, n):
             
-            if (i >= len(nums)) or (i + 1 == len(nums) and isFirst):
+            if i >= n:
                 return 0
             
             max_money = 0
             for j in range(i + 2, len(nums)):
                 
-                if (j, isFirst) in cache:
-                    max_money = max(max_money, cache[(j, isFirst)])
+                if j in cache:
+                    max_money = max(max_money, cache[j])
                 
                 else:
-                    dp_house = dp(j, isFirst)
+                    dp_house = dp(j, n)
                     max_money = max(max_money, dp_house)
                     
-            cache[(i, isFirst)] = max_money + nums[i]
-            return cache[(i, isFirst)]
+            cache[i] = max_money + nums[i]
+            return cache[i]
         
         
         ans = 0
-        ans = max(ans, dp(0, True))
+        ans = max(ans, dp(0, len(nums) - 1))
+        cache = {}
+        
         for i in range(1, len(nums)):
-            ans = max(ans, dp(i, False))
+            ans = max(ans, dp(i, len(nums)))
             
         return ans
                 
