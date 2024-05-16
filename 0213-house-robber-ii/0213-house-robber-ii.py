@@ -27,12 +27,9 @@ class Solution:
         
         
         ans = 0
-        ans = max(ans, dp(0, len(nums) - 1))
+        dp_0 = dp(0, len(nums) - 1)
         cache = {}
+        dp_1 = dp(1, len(nums))
         
-        for i in range(1, len(nums)):
-            ans = max(ans, dp(i, len(nums)))
-            
-        return ans
-                
-            
+        return max(dp_0, dp_1, dp(2, len(nums)))
+        
