@@ -28,8 +28,7 @@ class Solution:
         
         ans = 0
         dp_0 = dp(0, len(nums) - 1)
-        cache = {}
-        dp_1 = dp(1, len(nums))
         
-        return max(dp_0, dp_1, dp(2, len(nums)))
+        cache = {}
+        return max(dp_0, dp(1, len(nums)), dp(2, len(nums)))
         
