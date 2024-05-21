@@ -49,15 +49,8 @@ class Solution:
         return long_path
                     
 
-
-
-
-
-
-
-
-
-
+        ### DP approach ###
+        
 #         cache = {}
         
 #         def inbound(row, col):
