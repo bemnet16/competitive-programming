@@ -28,7 +28,6 @@ class Solution:
                     queue.append((row, col))
         
         
-        print(indegree, queue)
         long_path = 0
         while queue:
             
