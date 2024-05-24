@@ -8,12 +8,12 @@ class Solution:
         
         for i, word in enumerate(words):
             
-            if cur == word[0:len(word) - 1]:
+            if cur == word[:-1]:
                 if len(word) > len(ans):
                     ans = word
                 cur = word
             
-            elif cur.startswith(word[:len(word) - 1]):
+            elif cur.startswith(word[:-1]):
                 cur = word
             
             if len(word) == 1:
