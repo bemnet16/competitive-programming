@@ -2,7 +2,7 @@ class TrieNode:
     def __init__(self):
         self.is_end = False
         self.count = 0
-        self.children = [ None for _ in range(26) ]
+        self.children = [None for _ in range(26)]
         
 
 class Trie:
@@ -30,7 +30,6 @@ class Trie:
 #             if not cur.children[ord(w) - ord('a')]:
 #                 return count
             
-            
             cur = cur.children[ord(w) - ord('a')]
             count += cur.count
         
@@ -43,7 +42,6 @@ class Solution:
         
         for word in words:
             trie.insert(word)
-            
         
         ans = []
         for word in words:
