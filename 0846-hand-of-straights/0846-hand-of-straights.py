@@ -4,8 +4,7 @@ class Solution:
         if len(hand) % groupSize:
             return False
         
-        countes = Counter(hand)
-        heap = sorted(countes.items())
+        heap = sorted(Counter(hand).items())
         heapify(heap)
         
         while heap:
