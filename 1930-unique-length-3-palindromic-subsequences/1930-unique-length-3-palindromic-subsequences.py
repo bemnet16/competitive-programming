@@ -14,6 +14,9 @@ class Solution:
             count = set()
             for i in range(start + 1, end):
                 count.add(s[i])
+                
+                if len(count) >= 26:
+                    break
             
             ans += len(count)
         
