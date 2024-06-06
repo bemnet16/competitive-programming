@@ -1,16 +1,12 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         
-        stk = []
-        ans = 0
+        profit = 0
         
-        for price in prices:
+        for i in range(1, len(prices)):
             
-            if stk and stk[-1] < price:
-                ans += price - stk.pop()
-            
-            stk.append(price)
+            if prices[i - 1] < prices[i]:
+                profit += (prices[i] - prices[i - 1])
         
         
-        return ans
-                
+        return profit
