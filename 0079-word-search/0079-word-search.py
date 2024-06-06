@@ -6,6 +6,8 @@ class Solution:
         def inbound(row, col):
             return (0 <= row < len(board)) and (0 <= col < len(board[0]))
         
+        
+        
         def dfs(vis, row, col, i):
             
             if i >= len(word):
@@ -22,7 +24,6 @@ class Solution:
                     vis.remove((new_row, new_col))
             return False
             
-        
         
         
         
