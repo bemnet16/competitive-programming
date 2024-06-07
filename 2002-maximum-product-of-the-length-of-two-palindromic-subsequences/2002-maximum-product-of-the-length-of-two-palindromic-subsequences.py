@@ -5,10 +5,10 @@ class Solution:
         
         for mask in range(1, 2 ** len(s)):
             
-            sequence = []
+            sequence = ""
             for i in range(len(s)):
                 if mask & (1 << i):
-                    sequence.append(s[i])
+                    sequence += s[i]
             
             if sequence and sequence == sequence[::-1]:
                 palindroms[mask] = len(sequence)
