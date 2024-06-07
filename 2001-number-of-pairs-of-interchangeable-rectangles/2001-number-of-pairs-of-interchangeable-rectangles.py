@@ -2,11 +2,10 @@ class Solution:
     def interchangeableRectangles(self, rectangles: List[List[int]]) -> int:
         
         def get_gcf(a, b):
-            
             if b == 0:
                 return a
-            
             return get_gcf(b, (a % b))
+        
         
         
         counts = defaultdict(int)
