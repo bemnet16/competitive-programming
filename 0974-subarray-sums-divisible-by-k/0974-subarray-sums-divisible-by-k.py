@@ -3,14 +3,14 @@ class Solution:
         
         mod_counts = defaultdict(int)
         mod_counts[0] = 1
-        tot = 0
+        prefixMod = 0
         subarrays = 0
         
         for num in nums:
             
-            tot += num
-            subarrays += mod_counts[(tot % k)]
-            mod_counts[(tot % k)] += 1
+            prefixMod = (prefixMod + num) % k
+            subarrays += mod_counts[prefixMod]
+            mod_counts[prefixMod] += 1
         
         
         return subarrays
