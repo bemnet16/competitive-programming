@@ -6,7 +6,7 @@ class Solution:
         occurence.add(s[:10])
         
         
-        for i in range(1, len(s) - 10 + 1):
+        for i in range(1, len(s) - 9):
             
             subString = s[i: i + 10]
             
