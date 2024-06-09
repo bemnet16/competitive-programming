@@ -1,14 +1,14 @@
 class Solution:
     def zeroFilledSubarray(self, nums: List[int]) -> int:
         
-        zeros = 1
-        ans = 0
+        zero_sequences = 0
+        subarrays = 0
         
         for num in nums:
             if num == 0:
-                ans += zeros
-                zeros += 1
+                zero_sequences += 1
+                subarrays += zero_sequences
             else:
-                zeros = 1
+                zero_sequences = 0
         
-        return ans
+        return subarrays
