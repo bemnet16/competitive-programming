@@ -7,7 +7,7 @@ class Solution:
         spaces = 0
         total_lg = 0
         
-        for i, word in enumerate(words):
+        for word in words:
             
             if total_lg + len(word) > maxWidth:
                 
