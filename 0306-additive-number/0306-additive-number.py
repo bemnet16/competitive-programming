@@ -6,7 +6,6 @@ class Solution:
         def backtrack(i, additives):
             
             if i >= len(num):
-                
                 if len(additives) <= 2:
                     return False
                 
@@ -14,6 +13,7 @@ class Solution:
                     if additives[j] + additives[j + 1] != additives[j + 2]:
                         return False
                 return True
+            
             
             # optimize / check every additives if they met the condition
             if len(additives) >= 3:
@@ -30,7 +30,6 @@ class Solution:
                 additives.append(int(num[i: j + 1]))
                 if backtrack(j + 1, additives):
                     return True
-                
                 additives.pop()
             
             return False
