@@ -5,20 +5,14 @@ class Solution:
         
         def backtrack(i, additives):
             
-            if i >= len(num):
-                if len(additives) <= 2:
-                    return False
-                
-                for j in range(len(additives) - 2):
-                    if additives[j] + additives[j + 1] != additives[j + 2]:
-                        return False
-                return True
-            
-            
             # optimize / check every additives if they met the condition
             if len(additives) >= 3:
                 if additives[-3] + additives[-2] != additives[-1]:
                     return False
+                
+                if i >= len(num):
+                    return True
+            
             
             
             for j in range(i, len(num)):
