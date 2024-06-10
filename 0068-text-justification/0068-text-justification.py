@@ -10,14 +10,15 @@ class Solution:
         for i, word in enumerate(words):
             
             if total_lg + len(word) > maxWidth:
-                total_lg -= spaces
-                spaces -= 1
-                tot_spaces = maxWidth - total_lg
                 
+                total_lg -= spaces   # only the length of the strings
+                spaces -= 1          # No of spaces between words
+                tot_spaces = maxWidth - total_lg   
+                
+                # only one word in temp
                 if spaces == 0:
-                    if temp:
-                        line = temp.copy()
-                        line.append(" " * (maxWidth - len(temp[0])))
+                    temp.append(" " * (maxWidth - len(temp[0])))
+                    ans.append("".join(temp))
                 
                 else:
                     q = tot_spaces // spaces
@@ -32,9 +33,9 @@ class Solution:
                         else:
                             line.append(" " * q)
                     line.pop()
-
-                            
-                ans.append("".join(line))
+                    ans.append("".join(line))
+                 
+                # hold the current word to proceed
                 word_lg = len(word)
                 spaces = 1
                 total_lg = word_lg + spaces
@@ -48,7 +49,8 @@ class Solution:
                 spaces += 1
                 total_lg = word_lg + spaces
     
-        
+    
+        # handle last line words
         if temp:
             s = " ".join(temp)
             s += " " * (maxWidth - len(s))
