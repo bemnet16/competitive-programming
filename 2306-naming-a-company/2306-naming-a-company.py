@@ -8,16 +8,19 @@ class Solution:
         
         ans = 0
         
-        for prefix in hashSet:
-            for nx_pre in hashSet:
+        for char1 in hashSet:
+            for char2 in hashSet:
+                
+                if char1 == char2:
+                    continue
             
                 common = 0
                 
-                for suffix in hashSet[nx_pre]:
-                    if suffix in hashSet[prefix]:
+                for suffix in hashSet[char2]:
+                    if suffix in hashSet[char1]:
                         common += 1
                 
-                ans += (len(hashSet[prefix]) - common) * (len(hashSet[nx_pre]) - common)
+                ans += (len(hashSet[char1]) - common) * (len(hashSet[char2]) - common)
         
         
         return ans
