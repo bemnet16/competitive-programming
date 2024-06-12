@@ -15,7 +15,8 @@ class Solution:
                 right -= 1
             
             else:
-                subsequences += 1 << (right - left)
+                # subsequences += (subsequences + (2 ** (right - left))) % MOD
+                subsequences += 1 << (right - left)  # much optimze than the above one
                 left += 1
         
         
