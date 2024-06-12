@@ -15,7 +15,7 @@ class Solution:
                 right -= 1
             
             else:
-                subsequences = (subsequences + (2 ** (right - left))) % MOD
+                subsequences += 1 << (right - left)
                 left += 1
         
         
