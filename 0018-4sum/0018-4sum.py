@@ -4,27 +4,34 @@ class Solution:
         nums.sort()
         ans = set()
         
-        for a in range(len(nums)):
-            for b in range(a + 1, len(nums)):
-                
-                c = b + 1
-                d = len(nums) - 1
-                
-                while c < d:
-                    
-                    sum_4 = nums[a] + nums[b] + nums[c] + nums[d]
-                    
-                    if sum_4 - target < 0:
-                        c += 1
-                    elif sum_4 - target > 0:
-                        d -= 1
-                    else:
-                        ans.add((nums[a], nums[b], nums[c], nums[d]))
-                        c += 1
-                        d -= 1
         
+        def twoSum(cur, i, j, t):
+            while i < j:
+                if nums[i] + nums[j] + t < 0:
+                    i += 1
+                elif nums[i] + nums[j] + t > 0:
+                    j -= 1
+                else:
+                    cur.append(nums[i])
+                    cur.append(nums[j])
+                    ans.add(tuple(sorted(cur)))
+                    cur.pop()
+                    cur.pop()
+                    i += 1
+                    j -= 1
+                
         
+        def kSum(cur, k, idx, t):
+            
+            if k == 2:
+                twoSum(cur, idx, len(nums) - 1, t)
+                return
+            
+            for i in range(idx, len(nums)):
+                cur.append(nums[i])
+                kSum(cur, k - 1, i + 1, t + nums[i])
+                cur.pop()
+                
+        
+        kSum([], 4, 0, -target)
         return ans
-                
-        
-        
