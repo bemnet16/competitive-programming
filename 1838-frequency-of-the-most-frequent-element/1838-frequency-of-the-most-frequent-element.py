@@ -5,24 +5,19 @@ class Solution:
         
         ans = 1
         l = 0
-        cur = nums[0]
         
         for r in range(1, len(nums)):
             
-            if nums[r] > cur:
+            if nums[r] > nums[r - 1]:
                 
-                lg = r - l
-                diff = nums[r] - cur
+                diff = nums[r] - nums[r - 1]
                 
-                while l <= r and k < (lg * diff):
-                        k += cur - nums[l]
+                while l <= r and k < ((r - l) * diff):
+                        k += nums[r - 1] - nums[l]
                         l += 1
-                        lg -= 1
                 
-                
-                if k >= (lg * diff):
-                    k -= (lg * diff)
-                    cur = nums[r]
+                if k >= ((r - l) * diff):
+                    k -= ((r - l) * diff)
                 
             ans = max(ans, r - l + 1)
         
