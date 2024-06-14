@@ -16,8 +16,7 @@ class Solution:
                         k += nums[r - 1] - nums[l]
                         l += 1
                 
-                if k >= ((r - l) * diff):
-                    k -= ((r - l) * diff)
+                k -= ((r - l) * diff)
                 
             ans = max(ans, r - l + 1)
         
