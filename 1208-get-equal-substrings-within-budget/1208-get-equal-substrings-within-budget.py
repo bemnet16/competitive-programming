@@ -10,7 +10,7 @@ class Solution:
             
             total_cost += abs(ord(s[r]) - ord(t[r]))
             
-            while total_cost > maxCost:
+            if total_cost > maxCost:
                 total_cost -= abs(ord(s[l]) - ord(t[l]))
                 l += 1
             
