@@ -24,17 +24,15 @@ class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
         self.res = []
         self.idx = -1
-        for item in nestedList:
-            self.helper(item)
+        self.helper(nestedList)
         
         
-    def helper(self, ele):
-        if ele.isInteger():
-            self.res.append(ele.getInteger())
-            return
-        
-        for item in ele.getList():
-            self.helper(item)
+    def helper(self, nested):
+        for n in nested:
+            if n.isInteger():
+                self.res.append(n.getInteger())
+            else:
+                self.helper(n.getList())
         
     
     def next(self) -> int:
