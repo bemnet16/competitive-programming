@@ -3,17 +3,18 @@ class Solution:
         
         nums.sort()
         
+        
         def check(x):
             
             pairs = 0
             i, j = 0, 1
+            
             while i < len(nums) and j < len(nums):
                 
                 if abs(nums[i] - nums[j]) <= x:
                     i += 2
                     j += 2
                     pairs += 1
-                    
                 else:
                     i += 1
                     j += 1
@@ -23,6 +24,8 @@ class Solution:
             
             return pairs >= p
                     
+        
+        
         
         
         low, high = 0, 10 ** 9
