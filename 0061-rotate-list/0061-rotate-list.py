@@ -12,6 +12,7 @@ class Solution:
         length = 0
         cur = head
         last = None
+        
         while cur:
             length += 1
             last = cur
@@ -20,7 +21,6 @@ class Solution:
         k %= length
         cur = head
         i = 1
-        
         
         while i < (length - k):
             i += 1
