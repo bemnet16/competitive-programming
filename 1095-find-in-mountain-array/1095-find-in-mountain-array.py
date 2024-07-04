@@ -9,23 +9,22 @@
 class Solution:
     def findInMountainArray(self, target: int, mountain_arr: 'MountainArray') -> int:
         
-        lg = mountain_arr.length()
-        left, right = 1, lg - 2
+        left, right = 1, mountain_arr.length() - 2
         
         # find the peak value
-        while left <= right:
+        while left < right:
             
             mid = left + (right - left) // 2
-            leftVal, midVal, rightVal = mountain_arr.get(mid - 1), mountain_arr.get(mid), mountain_arr.get(mid + 1)
-            if leftVal < midVal < rightVal:
+            
+            if mountain_arr.get(mid) < mountain_arr.get(mid + 1):
                 left = mid + 1
-            elif leftVal > midVal > rightVal:
-                right = mid - 1
             else:
-                break
+                right = mid
 
+                
+        
         # first search from left part
-        low, high = 0, mid
+        low, high = 0, left
         while low <= high:
             
             mid = low + (high - low) // 2
@@ -40,10 +39,10 @@ class Solution:
             else:
                 high = mid - 1
             
-            
+        
         
         # finally search on the right part
-        low, high = mid, lg - 1
+        low, high = left, mountain_arr.length() - 1
         while low <= high:
             
             mid = low + (high - low) // 2
