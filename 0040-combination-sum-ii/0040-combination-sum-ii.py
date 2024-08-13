@@ -2,15 +2,17 @@ class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         
         candidates.sort()
-        ans = set()
+        ans = []
         
-        def backtrack(target, idx, comb):
+        def backtrack(_sum, idx, comb):
             
-            if target < 0:
+            if _sum > target:
                 return
             
-            if target == 0:
-                ans.add(tuple(comb.copy()))
+            if target == _sum:
+                ans.append(comb.copy())
+                return
+            
             
             for i in range(idx, len(candidates)):
                 
@@ -18,11 +20,12 @@ class Solution:
                     continue
                 
                 val = candidates[i]
-                
-                backtrack(target - val, i + 1, comb + [val])
+                comb.append(val)
+                backtrack(_sum + val, i + 1, comb)
+                comb.pop()
         
         
-        backtrack(target, 0, [])
+        backtrack(0, 0, [])
         return ans
                 
                 
